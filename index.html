@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>incompile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <span class="brand">incompile</span>
+  <span id="state" class="state">loading</span>
+  <select id="lang" aria-label="Language">
+    <option value="python">python</option>
+    <option value="javascript">javascript</option>
+    <option value="html">html/css/js</option>
+    <option value="cpp">c++</option>
+  </select>
+  <input id="extra" type="text" value="g142 -O2 -std=c++20" spellcheck="false" title="Compiler Explorer compiler id, then flags" aria-label="Compiler id and flags" hidden>
+  <input id="endpoint" type="url" value="https://emkc.org/api/v2/piston" spellcheck="false" aria-label="Piston endpoint" hidden>
+  <select id="engine" aria-label="Engine">
+    <option value="pyodide">pyodide</option>
+    <option value="piston">piston</option>
+  </select>
+  <input id="name" type="text" value="main.py" spellcheck="false" aria-label="File name">
+  <button id="save" title="ctrl+s save file">save</button>
+  <button id="clear">clear</button>
+  <button id="run" disabled>compile</button>
+</header>
+<main>
+  <section class="editor">
+    <pre id="gutter" aria-hidden="true"></pre>
+    <div class="wrap">
+      <pre id="hl" aria-hidden="true"></pre>
+      <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="Python code"></textarea>
+    </div>
+  </section>
+  <section class="side">
+    <iframe id="preview" title="hew preview" sandbox="allow-scripts allow-modals allow-forms" hidden></iframe>
+    <pre id="out" aria-live="polite"></pre>
+    <textarea id="stdin" spellcheck="false" placeholder="stdin" aria-label="Standard input"></textarea>
+  </section>
+</main>
+<footer class="foot">
+  <span id="pos">1:1</span>
+  <span id="eng">pyodide</span>
+  <span id="time" class="right"></span>
+  <span id="fps">0 fps</span>
+  <span id="up">00:00:00</span>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
